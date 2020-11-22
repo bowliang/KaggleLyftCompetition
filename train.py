@@ -35,8 +35,8 @@ cfg = omegaconf.DictConfig(cfg)
 name_for_save = 'Big_training'
 epochs = cfg["model_params"]["epochs"]
 learning_rate = cfg["model_params"]["lr"]
-training_percentage = 0.1
-validation_percentage = 1
+training_percentage = cfg["train_data_loader"]["training_percentage"]
+validation_percentage = cfg["val_data_loader"]["validation_percentage"]
 
 API_KEY = os.environ.get('NEPTUNE_API_KEY')
 neptune_logger = NeptuneLogger(
@@ -73,7 +73,7 @@ trainer = Trainer(
     logger=neptune_logger,
     checkpoint_callback=checkpoint_callback,
     # limit_val_batches=LIMIT_VAL_BATCHES,
-    gpus=1
+    gpus=1,
 )
 
 trainer.fit(model)

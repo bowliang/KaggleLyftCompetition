@@ -25,6 +25,7 @@ import zarr
 
 from poinet_model import *
 
+
 with open('parameters.json') as json_file:
     JSON_PARAMETERS = json.load(json_file)
 
@@ -50,8 +51,6 @@ WEIGHT_DECAY = JSON_PARAMETERS["WEIGHT_DECAY"]
 GRADIENT_CLIP_VAL = JSON_PARAMETERS["GRADIENT_CLIP_VAL"]
 LIMIT_VAL_BATCHES = JSON_PARAMETERS["LIMIT_VAL_BATCHES"]
 
-# KEPT_PERCEPTION_LABELS_DICT = {label:PERCEPTION_LABELS.index(label) for label in KEPT_PERCEPTION_LABELS}
-# KEPT_PERCEPTION_KEYS = sorted(KEPT_PERCEPTION_LABELS_DICT.values())
 
 torch.backends.cudnn.benchmark =  True
 
